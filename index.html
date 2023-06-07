@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>호텔 안내문구</title>
+  <script>
+    function displayMessage() {
+      var currentTime = new Date();
+      var hour = currentTime.getHours();
+      var url = "";
+
+      if (hour >= 5 && hour < 11) {
+        url = "https://gkakxjaus24.github.io/Yakorea_KIOSK/05-11.html";
+      } else if (hour >= 11 && hour < 15) {
+        url = "https://gkakxjaus24.github.io/Yakorea_KIOSK/11-15.html";
+      } else if (hour >= 15 && hour < 23) {
+        url = "https://gkakxjaus24.github.io/Yakorea_KIOSK/15-23.html";
+      } else {
+        url = "https://gkakxjaus24.github.io/Yakorea_KIOSK/23-05.html";
+      }
+
+      // 링크를 자동으로 보여주는 기능
+      window.location.href = url;
+    }
+
+    // 페이지가 로드될 때마다 메시지 표시 함수 호출
+    window.onload = function() {
+      displayMessage();
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>
