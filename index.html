@@ -3,6 +3,39 @@
 <head>
   <title>호텔 안내문구</title>
   <script>
+        // 특정한 시각들 설정 (오전 5시, 오전 11시, 오후 3시, 오후 11시)
+    var targetTimes = [
+      { hours: 5, minutes: 0 },
+      { hours: 11, minutes: 0 },
+      { hours: 15, minutes: 0 },
+      { hours: 23, minutes: 0 }
+    ];
+
+    // 주기적으로 현재 시간을 체크하여 특정한 시각과 비교 후 새로고침
+    function checkRefresh() {
+      var currentTime = new Date();
+
+      for (var i = 0; i < targetTimes.length; i++) {
+        var targetTime = new Date();
+        targetTime.setHours(targetTimes[i].hours);
+        targetTime.setMinutes(targetTimes[i].minutes);
+
+        // 현재 시간이 특정한 시각과 같거나 크면 페이지 새로고침
+        if (currentTime >= targetTime) {
+          location.reload();
+          break;
+        }
+      }
+
+      // 1분마다 checkRefresh 함수 호출
+      setTimeout(checkRefresh, 60000); // 1분 (60000 밀리초)
+    }
+
+    // 페이지 로드 후 checkRefresh 함수 호출
+    window.onload = function() {
+      checkRefresh();
+    };
+
     function displayMessage() {
       var currentTime = new Date();
       var hour = currentTime.getHours();
